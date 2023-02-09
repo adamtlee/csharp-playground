@@ -26,7 +26,7 @@ class Program
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true
-            };
+            }; 
 
             pokemonData = JsonConvert.DeserializeObject<PokemonData>(content);
 
