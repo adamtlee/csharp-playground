@@ -10,6 +10,11 @@ class Program
         var resultOne = strConverter.ReplacePunctuationWithVowel(string1);
 
         Console.WriteLine(string1);
-        Console.WriteLine(resultOne); 
+        Console.WriteLine(resultOne);
+
+        var string2 = "Hola Amigo";
+        var string3 = "aeiouAEIOU";
+        var resultTwo = strConverter.ReplaceVowelWithNumber(string3);
+        Console.WriteLine(resultTwo);
     }
 }

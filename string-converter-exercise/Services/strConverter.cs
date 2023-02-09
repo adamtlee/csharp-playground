@@ -23,17 +23,49 @@ namespace SCE.Services
 		{
 			int vowelCounter = 0;
 			string result = "";
-			foreach(char c in s)
-			{
-				if(c.Equals('a') && vowelCounter > 9)
-				{
-					vowelCounter++;
-					result.Replace(c, '1');
-				}
-			}
+            string vowels = "aeiouAEIOU";
 
-			return result;
-		}
+            foreach (char c in s)
+            {
+                if (vowelCounter >= 8)
+                {
+                    result += c;
+                }
+                else if (vowels.IndexOf(c) != -1)
+                {
+                    vowelCounter++;
+                    switch (c)
+                    {
+                        case 'a':
+                        case 'A':
+                            result += '1';
+                            break;
+                        case 'e':
+                        case 'E':
+                            result += '2';
+                            break;
+                        case 'i':
+                        case 'I':
+                            result += '3';
+                            break;
+                        case 'o':
+                        case 'O':
+                            result += '4';
+                            break;
+                        case 'u':
+                        case 'U':
+                            result += '5';
+                            break;
+                    }
+                }
+                else
+                {
+                    result += c;
+                }
+            }
+
+            return result;
+        }
 	}
 }
 
