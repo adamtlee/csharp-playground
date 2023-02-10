@@ -24,6 +24,7 @@ public class SCEServicestTests
 
     [Theory]
     [InlineData("The answer is 42. What's the question?", "Th211nsw2r13s1422aWhatosatheaquestionu")]
+    [InlineData("These are not the droids you're looking for!", "Th2s211r21n4t1theadroidsayouorealookingafori")]
     public void ConvertPunctuationToVowels_Success(string testString, string expectedResult)
     {
 
@@ -36,5 +37,16 @@ public class SCEServicestTests
         // Assert
         Assert.Equal(result, expectedResult);
 
+    }
+
+    [Theory]
+    [InlineData("Hola Amigo", "H4l1 1m3go")]
+    public void ConvertFirstEightCharsVowelsToNumbers_Success(string testString, string expectedResult)
+    {
+        // At the moment this test case is failing
+        var sut = StrConverter.ConvertFirstEightCharsVowelsToNumbers(testString);
+
+        // Assert
+        Assert.Equal(sut, expectedResult); 
     }
 }
