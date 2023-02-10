@@ -7,6 +7,26 @@ namespace SCE.Services
 		{
 		}
 
+        public static string ConvertFirstEightCharsVowelsToNumbers(string s)
+        {
+            if (s == null)
+            {
+                throw new ArgumentNullException(nameof(s));
+            }
+
+            if (s.Length < 8)
+            {
+                return "string is less than 8 characters.";
+            }
+            if(s.Length >= 8)
+            {
+                // TODO Logic
+            }
+            // Not ideal but will work on later
+            return "";
+            
+        }
+
 		public static string ReplacePunctuationWithVowel(string s)
 		{
 			var result = s
