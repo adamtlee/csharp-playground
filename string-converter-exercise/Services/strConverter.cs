@@ -1,9 +1,9 @@
 ﻿using System;
 namespace SCE.Services
 {
-	public class strConverter
+	public class StrConverter
 	{
-		public strConverter()
+		public StrConverter()
 		{
 		}
 

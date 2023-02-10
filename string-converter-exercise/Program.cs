@@ -5,16 +5,16 @@ class Program
     public static void Main(string[] args)
     {
         Console.WriteLine("string-converter-exercise");
-        var stringConverter = new strConverter();
+        var stringConverter = new StrConverter();
         var string1 = "The answer is 42. What's the question?";
-        var resultOne = strConverter.ReplacePunctuationWithVowel(string1);
+        var resultOne = StrConverter.ReplacePunctuationWithVowel(string1);
 
         Console.WriteLine(string1);
         Console.WriteLine(resultOne);
 
         var string2 = "Hola Amigo";
         var string3 = "aeiouAEIOU";
-        var resultTwo = strConverter.ReplaceVowelWithNumber(string3);
+        var resultTwo = StrConverter.ReplaceVowelWithNumber(string3);
         Console.WriteLine(resultTwo);
     }
 }
