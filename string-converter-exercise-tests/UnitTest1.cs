@@ -12,11 +12,10 @@ public class UnitTest1
     public void ConvertFirstEightVowels_Success()
     {
         // Arrange
-        var strConverter = new StrConverter(); 
         var testStringOne = "Hola Amigo";
 
         // Act
-        var sut = strConverter.ReplaceVowelWithNumber(testStringOne);
+        var sut = StrConverter.ReplaceVowelWithNumber(testStringOne);
 
         // Assert
         Assert.Equal("H4l1 1m3g4", sut); 
