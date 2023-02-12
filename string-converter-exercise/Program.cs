@@ -16,5 +16,8 @@ class Program
         var string3 = "aeiouAEIOU";
         var resultTwo = StrConverter.ReplaceVowelWithNumber(string3);
         Console.WriteLine(resultTwo);
+
+        var resultThree = StrConverter.ConvertFirstEightCharsVowelsToNumbers(string2);
+        Console.WriteLine(resultThree);
     }
 }

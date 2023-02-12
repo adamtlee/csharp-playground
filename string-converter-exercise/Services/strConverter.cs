@@ -9,22 +9,43 @@ namespace SCE.Services
 
         public static string ConvertFirstEightCharsVowelsToNumbers(string s)
         {
-            if (s == null)
+            int length = s.Length;
+            int n = length > 8 ? 8 : length;
+
+            string output = "";
+            for (int i = 0; i < n; i++)
             {
-                throw new ArgumentNullException(nameof(s));
+                char c = s[i];
+                switch (c)
+                {
+                    case 'a':
+                    case 'A':
+                        output += '1';
+                        break;
+                    case 'e':
+                    case 'E':
+                        output += '2';
+                        break;
+                    case 'i':
+                    case 'I':
+                        output += '3';
+                        break;
+                    case 'o':
+                    case 'O':
+                        output += '4';
+                        break;
+                    case 'u':
+                    case 'U':
+                        output += '5';
+                        break;
+                    default:
+                        output += c;
+                        break;
+                }
             }
 
-            if (s.Length < 8)
-            {
-                return "string is less than 8 characters.";
-            }
-            if(s.Length >= 8)
-            {
-                // TODO Logic
-            }
-            // Not ideal but will work on later
-            return "";
-            
+            Console.WriteLine("Converted string: " + output + s.Substring(n));
+            return output + s.Substring(n); 
         }
 
 		public static string ReplacePunctuationWithVowel(string s)
