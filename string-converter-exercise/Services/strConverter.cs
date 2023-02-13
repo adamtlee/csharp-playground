@@ -43,8 +43,6 @@ namespace SCE.Services
                         break;
                 }
             }
-
-            Console.WriteLine("Converted string: " + output + s.Substring(n));
             return output + s.Substring(n); 
         }
 
