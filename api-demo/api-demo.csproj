@@ -11,11 +11,15 @@
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="Services\" />
+    <None Remove="Microsoft.Extensions.Hosting" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
   </ItemGroup>
 </Project>

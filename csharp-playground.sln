@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "string-converter-exercise",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "string-converter-exercise-tests", "string-converter-exercise-tests\string-converter-exercise-tests.csproj", "{E3689695-1E8D-481E-AAAE-47D64B12B222}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvidAlgorithms", "AvidAlgorithms\AvidAlgorithms.csproj", "{AF39A2D0-2DC2-49BC-8781-58A20F09C06D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E3689695-1E8D-481E-AAAE-47D64B12B222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3689695-1E8D-481E-AAAE-47D64B12B222}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3689695-1E8D-481E-AAAE-47D64B12B222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF39A2D0-2DC2-49BC-8781-58A20F09C06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF39A2D0-2DC2-49BC-8781-58A20F09C06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF39A2D0-2DC2-49BC-8781-58A20F09C06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF39A2D0-2DC2-49BC-8781-58A20F09C06D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
