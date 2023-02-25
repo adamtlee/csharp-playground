@@ -3,13 +3,16 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using api_demo.Models;
 using ApiDemo.Models;
 using ApiDemo.Services;
 using ApiDemo.Services.Integration;
 using ApiDemo.Services.Pokemon;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json; 
 
 class Program
@@ -18,7 +21,7 @@ class Program
     {
         using IHost host = CreateHostBuilder(args).Build();
         var serviceProvider = host.Services;
-        
+
         try
         {
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
@@ -52,12 +55,53 @@ class Program
 
         serviceCollection.AddScoped<IIntegrationService, ApplicationIntegration>();
         serviceCollection.AddSingleton<IPokemonClient, PokemonClient>();
+
         serviceCollection.AddHttpClient("PokemonClient", client =>
         {
+            IConfiguration config = new ConfigurationBuilder()
+           .AddJsonFile("appsettings.json")
+           .AddEnvironmentVariables()
+           .Build();
+
+            var ps = config.GetRequiredSection("PokemonSettings").Get<PokemonSettings>();
             // Configure the HttpClient
-            client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
+            client.BaseAddress = new Uri(ps.BaseUrl);
             client.Timeout = new TimeSpan(0, 0, 30);
         });
+
+        /*
+        Testing
+        static void Main(string[] args)
+            {
+                var services = new ServiceCollection();
+
+                // Register first HttpClient with a named client
+                services.AddHttpClient("Url1", client =>
+                {
+                    client.BaseAddress = new Uri("https://example.com/api1/");
+                });
+
+                // Register second HttpClient with a named client
+                services.AddHttpClient("Url2", client =>
+                {
+                    client.BaseAddress = new Uri("https://example.com/api2/");
+                });
+
+                var serviceProvider = services.BuildServiceProvider();
+
+                // Resolve first HttpClient by named client
+                var httpClient1 = serviceProvider.GetService<IHttpClientFactory>().CreateClient("Url1");
+
+                // Resolve second HttpClient by named client
+                var httpClient2 = serviceProvider.GetService<IHttpClientFactory>().CreateClient("Url2");
+
+                // Use the HttpClients as needed...
+            }
+
+
+
+         
+         */
     }
 }
 
