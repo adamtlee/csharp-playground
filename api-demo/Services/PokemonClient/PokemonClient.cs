@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using Microsoft.Extensions.Http;
 using ApiDemo.Models;
 using Microsoft.Extensions.Configuration;
 
@@ -7,17 +8,18 @@ namespace ApiDemo.Services.Pokemon
 {
     public class PokemonClient : IPokemonClient
     {
-        private static HttpClient _httpClient = new HttpClient();
-        public PokemonClient()
+        private readonly IHttpClientFactory _httpClientFactory;
+        public PokemonClient(IHttpClientFactory httpClientFactory)
         {
-            _httpClient.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
-            _httpClient.Timeout = new TimeSpan(0, 0, 30);
-            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClientFactory = httpClientFactory;
         }
+
 
         public async Task<List<PokemonUrl>> GetPokemonUrl()
         {
-            var response = await _httpClient.GetAsync("pokemon");
+            var client = _httpClientFactory.CreateClient("PokemonClient");
+
+            var response = await client.GetAsync("pokemon");
             response.EnsureSuccessStatusCode();
 
             var pokemonUrls = new List<PokemonUrl>();
@@ -40,7 +42,8 @@ namespace ApiDemo.Services.Pokemon
 
         public async Task<ApiDemo.Models.Pokemon> GetPokemonMoves()
         {
-            var response = await _httpClient.GetAsync("move-target/1/");
+            var client = _httpClientFactory.CreateClient("PokemonClient");
+            var response = await client.GetAsync("move-target/1/");
             response.EnsureSuccessStatusCode();
             var pokemonMoves = new ApiDemo.Models.Pokemon(); 
             var content = await response.Content.ReadAsStringAsync();

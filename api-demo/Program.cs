@@ -18,7 +18,7 @@ class Program
     {
         using IHost host = CreateHostBuilder(args).Build();
         var serviceProvider = host.Services;
-
+        
         try
         {
             var logger = host.Services.GetRequiredService<ILogger<Program>>();
@@ -52,8 +52,12 @@ class Program
 
         serviceCollection.AddScoped<IIntegrationService, ApplicationIntegration>();
         serviceCollection.AddSingleton<IPokemonClient, PokemonClient>();
-
-
+        serviceCollection.AddHttpClient("PokemonClient", client =>
+        {
+            // Configure the HttpClient
+            client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
+            client.Timeout = new TimeSpan(0, 0, 30);
+        });
     }
 }
 
