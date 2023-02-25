@@ -14,16 +14,16 @@
     <None Remove="Services\" />
     <None Remove="Microsoft.Extensions.Hosting" />
     <None Remove="Services\Integration\" />
-    <None Remove="Services\Pokemon\" />
+    <None Remove="Microsoft.Extensions.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Integration\" />
-    <Folder Include="Services\Pokemon\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
   </ItemGroup>
 </Project>

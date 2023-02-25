@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 using ApiDemo.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiDemo.Services.Pokemon
 {
