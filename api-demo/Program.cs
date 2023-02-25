@@ -99,6 +99,24 @@ class Program
             }
 
 
+        -- DI example
+
+        public class MyService
+{
+    private readonly HttpClient _httpClient1;
+    private readonly HttpClient _httpClient2;
+
+    public MyService(IHttpClientFactory httpClientFactory)
+    {
+        // Resolve the HttpClients using named clients
+        _httpClient1 = httpClientFactory.CreateClient("Url1");
+        _httpClient2 = httpClientFactory.CreateClient("Url2");
+    }
+
+    // Use the HttpClients as needed...
+}
+
+
 
          
          */
