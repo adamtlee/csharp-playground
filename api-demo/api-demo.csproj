@@ -17,11 +17,13 @@
     <None Remove="Microsoft.Extensions.Configuration" />
     <None Remove="System.Net.Http" />
     <None Remove="Microsoft.Extensions.Http" />
+    <None Remove="Services\JsonPlaceHolderClient\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Integration\" />
+    <Folder Include="Services\JsonPlaceHolderClient\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -32,7 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Program.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using ApiDemo.Services.JsonPlaceHolderClient;
 using ApiDemo.Services.Pokemon;
 
 namespace ApiDemo.Services.Integration
@@ -6,13 +7,17 @@ namespace ApiDemo.Services.Integration
 	public class ApplicationIntegration : IIntegrationService
 	{
 		private readonly IPokemonClient _pokemonClient;
-		public ApplicationIntegration(IPokemonClient pokemonClient)
+
+		private readonly IJsonPlaceHolderClient _jphClient; 
+		public ApplicationIntegration(IPokemonClient pokemonClient, IJsonPlaceHolderClient jphClient)
 		{
-			_pokemonClient = pokemonClient; 
+			_pokemonClient = pokemonClient;
+			_jphClient = jphClient;
 		}
 
 		public async Task Run()
 		{
+			await GetJsonDataDemo();
             await GetPokemonMove();
             await GetResource();
 			
@@ -47,9 +52,18 @@ namespace ApiDemo.Services.Integration
                 Console.WriteLine($"descriptions language: {d.language.name}");
                 Console.WriteLine($"descriptions description: {d.description}");
             }
-           
-            
 		}
+
+		public async Task GetJsonDataDemo()
+		{
+			var response = await _jphClient.GetJPHResponse();
+
+            Console.WriteLine($"Entering GetJsonDataDemo()");
+            Console.WriteLine($"{response.id}");
+			Console.WriteLine($"{response.title}");
+            Console.WriteLine($"{response.body}");
+            Console.WriteLine($"{response.userId}");
+        }
 	}
 }
 

@@ -7,6 +7,7 @@ using api_demo.Models;
 using ApiDemo.Models;
 using ApiDemo.Services;
 using ApiDemo.Services.Integration;
+using ApiDemo.Services.JsonPlaceHolderClient;
 using ApiDemo.Services.Pokemon;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,8 @@ class Program
     {
         using IHost host = CreateHostBuilder(args).Build();
         var serviceProvider = host.Services;
+
+        
 
         try
         {
@@ -55,6 +58,7 @@ class Program
 
         serviceCollection.AddScoped<IIntegrationService, ApplicationIntegration>();
         serviceCollection.AddSingleton<IPokemonClient, PokemonClient>();
+        serviceCollection.AddScoped<IJsonPlaceHolderClient, JsonPlaceHolderClient>();
 
         serviceCollection.AddHttpClient("PokemonClient", client =>
         {
@@ -66,6 +70,19 @@ class Program
             var ps = config.GetRequiredSection("PokemonSettings").Get<PokemonSettings>();
             // Configure the HttpClient
             client.BaseAddress = new Uri(ps.BaseUrl);
+            client.Timeout = new TimeSpan(0, 0, 30);
+        });
+
+        serviceCollection.AddHttpClient("JPHClient", client =>
+        {
+            IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddEnvironmentVariables()
+            .Build();
+
+            var jp = config.GetRequiredSection("JsonPlaceHolderSettings").Get<JsonPlaceHolderSettings>();
+
+            client.BaseAddress = new Uri(jp.BaseUrl);
             client.Timeout = new TimeSpan(0, 0, 30);
         });
 
