@@ -56,7 +56,7 @@ class Program
 
         // serviceCollection.AddScoped<IIntegrationService, PokemonClient>();
 
-        serviceCollection.AddScoped<IIntegrationService, ApplicationIntegration>();
+        serviceCollection.AddScoped<IIntegrationService, IntegrationService>();
         serviceCollection.AddSingleton<IPokemonClient, PokemonClient>();
         serviceCollection.AddScoped<IJsonPlaceHolderClient, JsonPlaceHolderClient>();
 

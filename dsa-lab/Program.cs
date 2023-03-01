@@ -5,8 +5,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        var dsaDogs = new DsaDogs();
-        dsaDogs.DsaDogRun();
+        var soda = new Soda();
+        soda.sodaPop();
     }
 }
 

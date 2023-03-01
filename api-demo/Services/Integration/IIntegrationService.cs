@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ApiDemo.Services
+namespace ApiDemo.Services.Integration
 {
 	public interface IIntegrationService
 	{
